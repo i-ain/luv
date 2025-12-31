@@ -1,0 +1,260 @@
+@charset "utf-8";
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	-webkit-tap-highlight-color: transparent;
+}
+body {
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	font-family: 'Times New Roman', serif;
+	width: 100vw;
+	height: 100vh;
+	background-color:#FAF0E6;
+	touch-action: manipulation;
+}
+
+/* 语言选择覆盖层 */
+.language-overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color:#9c2a35 ;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	z-index: 10000;
+}
+
+.language-overlay h2 {
+	color: white;
+	margin-bottom: 40px;
+	font-size: 24px;
+	text-align: center;
+	padding: 0 20px;
+}
+
+.language-buttons {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+	width: 80%;
+	max-width: 400px;
+}
+
+.language-btn {
+	padding: 20px;
+	font-family: 'Courier New', monospace;
+	font-size: 18px;
+	font-weight: bold;
+	background-color: #ff4081;
+	color: white;
+	border: none;
+	border-radius: 10px;
+	cursor: pointer;
+	transition: all 0.3s;
+	-webkit-appearance: none;
+	min-height: 60px;
+	box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+	touch-action: manipulation;
+}
+
+.language-btn:hover {
+	background-color: #ff79a9;
+	transform: translateY(-2px);
+}
+
+.language-btn:active {
+	transform: translateY(0);
+}
+
+#indonesianBtn {
+	background-color: #c9302c;
+}
+
+#japaneseBtn {
+	background-color: #c9302c;
+}
+
+#englishBtn {
+	background-color: #c9302c;
+}
+
+/* 控制按钮容器 - 移动端优化 */
+.control-panel {
+	position: fixed;
+	top: 10px;
+	right: 10px;
+	z-index: 9999;
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+	display: none; /* 初始隐藏，语言选择后显示 */
+}
+
+/* 语言切换按钮容器 */
+.language-switcher {
+	display: flex;
+	gap: 5px;
+	flex-wrap: wrap;
+	justify-content: flex-end;
+}
+
+/* 控制按钮样式 - 移动端优化 */
+.control-btn {
+	padding: 10px 12px;
+	font-family: 'Courier New', monospace;
+	font-size: 14px;
+	font-weight: bold;
+	background-color: #c91f37;
+	color: white;
+	border: none;
+	border-radius: 6px;
+	cursor: pointer;
+	transition: all 0.2s;
+	-webkit-appearance: none;
+	min-height: 36px;
+	box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+	touch-action: manipulation;
+	white-space: nowrap;
+	width: auto;
+	min-width: 80px;
+}
+
+.control-btn:active {
+	transform: scale(0.98);
+	box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+}
+
+.lang-switch-btn {
+	background-color: #ffa631;
+	min-width: 70px;
+	flex: 1 0 auto;
+}
+
+.tip-window {
+	position: absolute;
+	height: 40px;
+	padding: 0 6px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 8px;
+	box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+	font-size: 14px;
+	text-align: center;
+	white-space: normal;
+	overflow: hidden;
+	transition: all 0.3s ease;
+	cursor: move;
+	user-select: none;
+	touch-action: none;
+	word-break: break-word;
+	word-wrap: break-word;
+	z-index: 100;
+}
+@media (min-width: 1025px) {
+.tip-window.spread {
+	font-size: 16px; /* 增加6px */
+}
+/* 移动端优化 */
+@media (max-width: 768px) {
+	.language-overlay h2 {
+		font-size: 20px;
+		margin-bottom: 30px;
+	}
+	
+	.language-buttons {
+		gap: 15px;
+	}
+	
+	.language-btn {
+		padding: 16px;
+		font-size: 16px;
+		min-height: 50px;
+	}
+	
+	.control-panel {
+		top: 10px;
+		right: 10px;
+		left: auto;
+		flex-direction: column;
+		align-items: flex-end;
+		gap: 6px;
+		max-width: calc(100vw - 20px);
+	}
+	
+	.language-switcher {
+		flex-direction: row;
+		justify-content: flex-end;
+		gap: 5px;
+	}
+	
+	.control-btn {
+		padding: 10px 12px;
+		font-size: 12px;
+		border-radius: 5px;
+		min-height: 40px;
+		max-width: 120px;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+	
+	.lang-switch-btn {
+		min-width: 70px;
+	}
+	
+	.tip-window {
+		height: 20px;
+		padding: 0 4px;
+		font-size: 12px;
+		border-radius: 6px;
+	}
+}
+
+@media (max-width: 480px) {
+	.language-overlay h2 {
+		font-size: 18px;
+		margin-bottom: 20px;
+	}
+	
+	.language-btn {
+		padding: 14px;
+		font-size: 14px;
+		min-height: 45px;
+	}
+	
+	.control-panel {
+		flex-direction: column;
+		align-items: flex-end;
+		gap: 4px;
+		max-width: calc(100vw - 20px);
+	}
+	
+	.language-switcher {
+		gap: 4px;
+	}
+	
+	.control-btn {
+		padding: 4px 5px;
+		font-size: 11px;
+		min-height: 32px;
+		max-width: 100px;
+	}
+	
+	.lang-switch-btn {
+		min-width: 50px;
+	}
+	
+	.tip-window {
+		height: 20px;
+		padding: 0 2px;
+		font-size: 11px;
+	}
+}
